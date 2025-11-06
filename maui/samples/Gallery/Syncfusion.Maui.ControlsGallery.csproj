@@ -1,0 +1,158 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Syncfusion.Maui.ControlsGallery</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<UseMauiCompat>false</UseMauiCompat>
+		<SingleProject>true</SingleProject>
+		<NoWarn>$(NoWarn);NU1803;XC0022;XC0045</NoWarn>
+    <MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+		<PackageCertificateKeyFile>Syncfusion.Maui.ControlsGallery_TemporaryKey.pfx</PackageCertificateKeyFile>
+		<AssemblyName>Syncfusion.Maui.ControlsGallery</AssemblyName>
+
+		<!-- Display name -->
+		<ApplicationTitle>Syncfusion.Maui.ControlsGallery</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.syncfusion.Syncfusion.Maui.ControlsGallery</ApplicationId>
+		<ApplicationIdGuid>BC541705-2D2C-4B9B-867D-6ED9C6FA7A71</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.18362.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.18362.0</TargetPlatformMinVersion>
+		<Configurations>Debug;Release;Release-Xml</Configurations>
+		<PackageCertificateThumbprint>2E201BC9A0451172406203A123FDCCF10485E2B0</PackageCertificateThumbprint>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DefineConstants>TRACE;DEBUG;</DefineConstants>
+		<WarningLevel>5</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DefineConstants>TRACE;RELEASE;</DefineConstants>
+		<WarningLevel>5</WarningLevel>
+		<!-- NOTE: not recommended for Debug builds! -->
+		<AndroidLinkTool>r8</AndroidLinkTool>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
+		<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
+		<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+		<PackageCertificateThumbprint>d01aec76455c0352854b7caaf1544f9b169dce54</PackageCertificateThumbprint>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Xml|AnyCPU' ">
+		<DefineConstants>TRACE;RELEASE;</DefineConstants>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningLevel>5</WarningLevel>
+		<!-- NOTE: not recommended for Debug builds! -->
+		<AndroidLinkTool>r8</AndroidLinkTool>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#4822E3" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#4822E3" BaseSize="*,*" />
+
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+
+    <!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\circularchart.png" />
+	  <EmbeddedResource Include="Resources\Images\drive.png" />
+	  <EmbeddedResource Include="Resources\Images\funnelchart.png" />
+	  <EmbeddedResource Include="Resources\Images\gmail.png" />
+	  <EmbeddedResource Include="Resources\Images\image_1.png" />
+	  <EmbeddedResource Include="Resources\Images\image_2.png" />
+	  <EmbeddedResource Include="Resources\Images\image_3.png" />
+	  <EmbeddedResource Include="Resources\Images\image_4.png" />
+	  <EmbeddedResource Include="Resources\Images\image_5.png" />
+	  <EmbeddedResource Include="Resources\Images\image_6.png" />
+	  <EmbeddedResource Include="Resources\Images\image_7.png" />
+	  <EmbeddedResource Include="Resources\Images\image_8.png" />
+	  <EmbeddedResource Include="Resources\Images\polarchart.png" />
+	  <EmbeddedResource Include="Resources\Images\pyramidchart.png" />
+    <EmbeddedResource Include="SampleList\AccordionSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\ButtonsSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\CalendarSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\CardsSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\CarouselSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\CartesianChartSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\ChipsSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\CircularChartSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\EffectsViewSamplesList.xml" />
+    <EmbeddedResource Include="SampleList\ExpanderSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\FunnelChartSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\NavigationDrawerSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\BottomSheetSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\NumericUpDownSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\PickerSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\PolarChartSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\PopupSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\PullToRefreshSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\PyramidChartSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\ShimmerSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\TabViewSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\TextInputLayoutSamplesList.xml" />
+	  <EmbeddedResource Include="SampleList\NumericEntrySamplesList.xml" />
+    <EmbeddedResource Include="SampleList\OtpInputSamplesList.xml" />
+    <EmbeddedResource Include="SampleList\ProgressBarSamplesList.xml" />
+    <EmbeddedResource Include="SampleList\SunburstChartSamplesList.xml" />
+    <EmbeddedResource Include="SampleList\SparkChartSamplesList.xml" />
+	  <EmbeddedResource Include="ControlList.xml" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Syncfusion.Maui.Toolkit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiXaml Update="Samples\Accordion\GettingStarted\View\AccordionGettingStarted.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Samples\CartesianChart\EmptyPoints\EmptyPointSupport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Samples\Expander\GettingStarted\View\ExpanderGettingStarted.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Samples\TabView\CenterButton\CenterButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+
+</Project>

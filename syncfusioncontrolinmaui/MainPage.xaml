@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:local="clr-namespace:syncfusioncontrolinmaui.CustomControls"
+             xmlns:cc="clr-namespace:syncfusioncontrolinmaui.CustomControls"
+             xmlns:customView="clr-namespace:syncfusioncontrolinmaui"
+             x:Class="syncfusioncontrolinmaui.MainPage">
+
+
+  <VerticalStackLayout Padding="20" Spacing="10">
+
+      <!--<local:CustomTextInputLayout 
+            LabelText="Bank Account Number"
+            Text="{Binding BankAccountNumber}"
+            HasError="{Binding HasError}" />-->
+
+    <local:CustomSfTextInputLayout HeightRequest="90" Text="ENter" LocalizedCode="ravi" LabelText="Please enter Name">
+    
+    </local:CustomSfTextInputLayout>
+
+
+    <syncfusion:SfComboBox 
+            DisplayMemberPath="Name"
+            SelectedItem="{Binding SelectedUser}"
+            ItemsSource="{Binding Users}" />
+
+    <syncfusion:SfComboBox x:Name="comboBox"
+                    IsEditable="true"
+                           HeightRequest="50"
+                           IsClearButtonVisible="True"
+                           SelectionMode="Multiple"
+                           TextHighlightMode="FirstOccurrence"
+                           HighlightedTextColor="Red"
+                    SelectedItem="{Binding SelectedUser}"
+                    ItemsSource="{Binding Users}"
+                    DisplayMemberPath="Name"
+                    TextMemberPath="Name">
+    </syncfusion:SfComboBox>
+
+
+
+    <cc:CustomEntry ShowErrorIcon="{Binding ShowIcon}" HeightRequest="70" WidthRequest="400"/>
+
+    <inputLayout:SfTextInputLayout Hint="Birth date"
+                               TrailingViewPosition="Outside"  HeightRequest="65" WidthRequest="300">
+      <Entry  />
+      <inputLayout:SfTextInputLayout.TrailingView>
+        <Label  Text="&#xe78f;"
+        FontFamily="MaterialAssets"
+        FontSize="24"
+        TextColor="Red"/>
+      </inputLayout:SfTextInputLayout.TrailingView>
+    </inputLayout:SfTextInputLayout>
+
+
+    <inputLayout:SfTextInputLayout Hint="Last Name">
+      <Entry Text="{Binding LastName}" />
+    </inputLayout:SfTextInputLayout>
+
+    <inputLayout:SfTextInputLayout Hint="Address">
+      <Entry Text="{Binding Address}" />
+    </inputLayout:SfTextInputLayout>
+
+    <inputLayout:SfTextInputLayout Hint="Pincode">
+      <Entry Text="{Binding Pincode}" />
+    </inputLayout:SfTextInputLayout>
+
+    <inputLayout:SfTextInputLayout Hint="PhoneNumber">
+      <Entry Text="{Binding PhoneNumber}" />
+    </inputLayout:SfTextInputLayout>
+
+
+    <buttons:SfButton Text="Add User" Command="{Binding AddUserCommand}" />
+    <buttons:SfButton Text="Remove User" Command="{Binding RemoveUserCommand}" />
+    <buttons:SfButton Text="Go to Scales Page" Command="{Binding GoToScalesPageCommand}" />
+
+
+  </VerticalStackLayout>
+
+
+
+</ContentPage>

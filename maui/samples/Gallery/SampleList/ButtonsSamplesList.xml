@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SyncfusionControls>
+	<ControlCategory Name="Buttons">
+		<Control Title="Segmented Control"
+             ControlName="SfSegmentedControl"
+             Image="segmentedcontrol.png"
+             Description="Offer choices from a linear set of segments, each as an independent button."
+             SearchTags="SfSegmentedControl,segmented buttons,segment,seg">
+
+			<Sample Title="Getting Started"
+              SampleName="GettingStarted"/>
+		</Control>
+    <Control ControlName="Button"
+				 Title="Button"
+				 Image="button.png"
+				 Description="A button is a UI element for user interaction, representing a one-click or tap action." >
+      <Sample SampleName="GettingStarted"
+					Title="Getting Started"
+					SearchTags="PrimaryButton, SfButton, Buttons, FlatButton, IconButton, OutlineButton, CircleButton"/>
+      <Sample SampleName="Customizations"
+					Title="Customizations"
+					SearchTags="Button, SfButton, Buttons"/>
+
+
+    </Control>
+	</ControlCategory>
+</SyncfusionControls>

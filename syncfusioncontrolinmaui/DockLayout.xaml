@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             x:Class="syncfusioncontrolinmaui.DockLayout">
+  <ContentPage.Content>
+    <sf:SfDockLayout>
+      <Label Text="Left" WidthRequest="80" sf:SfDockLayout.Dock="Left" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Background="#a8e6af" />
+      <Label Text="Top" HeightRequest="80" sf:SfDockLayout.Dock="Top" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Background="#a8e6cf" />
+      <sf:SfDockLayout ShouldExpandLastChild="False">
+        <Label Text="None" HeightRequest="45" Background="LightBlue"/>
+      </sf:SfDockLayout>
+      <!--<Label Text="Right"  WidthRequest="80"  sf:SfDockLayout.Dock="Right" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Background="#e0a8e6" />-->
+      <Label Text="Bottom" HeightRequest="80"  sf:SfDockLayout.Dock="Bottom" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Background="#e6a8a8"/>
+      <!--<Label Text="None" MinimumHeightRequest="80" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#dcefd8" />-->
+      <buttons:SfButton Text="Go to Scales Page" Command="{Binding GoToMainPageCommand}" />
+    </sf:SfDockLayout>
+  </ContentPage.Content>
+</ContentPage>
