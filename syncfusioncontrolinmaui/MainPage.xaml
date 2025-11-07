@@ -12,10 +12,7 @@
 
   <VerticalStackLayout Padding="20" Spacing="10">
 
-      <!--<local:CustomTextInputLayout 
-            LabelText="Bank Account Number"
-            Text="{Binding BankAccountNumber}"
-            HasError="{Binding HasError}" />-->
+      
 
     <local:CustomSfTextInputLayout HeightRequest="90" Text="ENter" LocalizedCode="ravi" LabelText="Please enter Name">
     

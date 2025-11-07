@@ -4,12 +4,13 @@
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              x:Class="syncfusioncontrolinmaui.ScalesPage"
              Title="ScalesPage">
+  
     <VerticalStackLayout>
         <Label 
             Text="{Binding Name}"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-
-    <buttons:SfButton Text="Go to DockLayout Page" Command="{Binding GoToDockLayoutCommand}" />
-  </VerticalStackLayout>
+            HorizontalOptions="Center" />      
+        <buttons:SfButton Text="Go to DockLayout Page" Command="{Binding GoToDockLayoutCommand}" />      
+    </VerticalStackLayout>
+  
 </ContentPage>
