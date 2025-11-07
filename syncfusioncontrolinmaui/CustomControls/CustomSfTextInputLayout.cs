@@ -5,9 +5,6 @@ namespace syncfusioncontrolinmaui.CustomControls;
 
 public class CustomSfTextInputLayout : ContentView
 {
-
-
-
 	private readonly SfTextInputLayout _textInputLayout;
 	private readonly Entry _entry;
 	private readonly Label _label;

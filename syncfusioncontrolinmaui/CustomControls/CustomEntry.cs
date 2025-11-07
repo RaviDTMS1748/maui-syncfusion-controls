@@ -36,20 +36,13 @@ public class CustomEntry : ContentView
 
 	public CustomEntry()
 	{
-		//var label = new Label
-		//{
-		//	FontSize = 14,
-		//	TextColor = Colors.Black,
-		//	Margin = new Thickness(5, 0, 0, 2)
-		//};
-		//label.SetBinding(Label.TextProperty, new Binding(nameof(LabelText), source: this));
-
+		
 		var entry = new Entry
 		{
 			BackgroundColor = Colors.Transparent,
 			Text="Ravi",
-			TextColor = Colors.Black,
-			HorizontalOptions = LayoutOptions.FillAndExpand
+			TextColor = Colors.Black//,
+			//HorizontalOptions = LayoutOptions.FillAndExpand
 		};
 		entry.SetBinding(Entry.TextProperty, new Binding(nameof(Text), source: this, mode: BindingMode.TwoWay));
 
@@ -64,27 +57,14 @@ public class CustomEntry : ContentView
 			Margin = new Thickness(5, 0, 0, 0)
 		};
 
-		//var horizontalLayout = new Grid
-		//{
-		//	ColumnDefinitions =
-		//		{
-		//			new ColumnDefinition { Width = GridLength.Star },
-		//			new ColumnDefinition { Width = GridLength.Auto }
-		//		},
-		//	VerticalOptions = LayoutOptions.Center,
-		//	Padding = new Thickness(0)
-		//};
-
-		//horizontalLayout.Add(entry, 0, 0);
-		//horizontalLayout.Add(_errorIcon, 1, 0);
+		
 
 		var inputLayout = new SfTextInputLayout
 		{
 			Hint = "",
 			ContainerType = ContainerType.Outlined,
 			HeightRequest = 60,
-			WidthRequest = 300,
-			//Content = horizontalLayout
+			WidthRequest = 300
 			
 		};
 
